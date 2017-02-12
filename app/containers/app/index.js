@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { navigatePush, navigatePop } from 'redux-modules/navigation';
+import { navigateReset, navigatePop } from 'redux-modules/navigation';
 import { setLoginModal, setLoginStatus } from 'redux-modules/user';
 import App from 'components/app';
 
@@ -13,8 +13,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    navigate: (action) => {
-      dispatch(navigatePush(action));
+    navigateReset: (routeName) => {
+      dispatch(navigateReset(routeName));
     },
     navigateBack: () => {
       dispatch(navigatePop());

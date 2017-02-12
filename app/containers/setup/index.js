@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { navigatePush, navigatePop, showNavHeader } from 'redux-modules/navigation';
+import { navigateReset } from 'redux-modules/navigation';
 
 import Setup from 'components/setup';
 
@@ -12,8 +12,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onFinishSetup: (action) => {
-      dispatch(navigatePop(action));
+    onFinishSetup: () => {
+      dispatch(navigateReset('Dashboard'));
     }
   };
 }

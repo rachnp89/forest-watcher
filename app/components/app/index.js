@@ -51,20 +51,14 @@ class App extends Component {
     this.setup = true;
     const userToken = await getToken();
     const setupStatus = await getSetupStatus();
-    if (!setupStatus) {
-      this.props.navigate('Setup');
-      this.props.setLoginStatus({
-        loggedIn: true,
-        token: userToken
-      });
-      this.setState({ loading: false });
-    } else {
-      this.props.setLoginStatus({
-        loggedIn: true,
-        token: userToken
-      });
-      this.setState({ loading: false });
+    if (setupStatus) {
+      this.props.navigateReset('Dashboard');
     }
+    this.props.setLoginStatus({
+      loggedIn: true,
+      token: userToken
+    });
+    this.setState({ loading: false });
   }
 
   async checkBeforeRender() {
@@ -93,6 +87,7 @@ class App extends Component {
 App.propTypes = {
   navigation: React.PropTypes.object.isRequired,
   setLoginModal: React.PropTypes.func.isRequired,
+  navigateReset: React.PropTypes.func.isRequired,
   dispatch: React.PropTypes.func.isRequired
 };
 
